@@ -1,3 +1,5 @@
+// +build cgo
+
 package gspt
 
 /*
@@ -12,20 +14,6 @@ import (
   "unsafe"
   "strings"
 )
-
-
-const (
-  // These values must match the return values for spt_init1() used in C.
-  HaveNone        = 0
-  HaveNative      = 1
-  HaveReplacement = 2
-)
-
-
-var (
-  HaveSetProcTitle int
-)
-
 
 func init() {
   HaveSetProcTitle = int(C.spt_init1());
@@ -64,4 +52,3 @@ func SetProcTitle(title string) {
 
   C.spt_setproctitle(cs)
 }
-
